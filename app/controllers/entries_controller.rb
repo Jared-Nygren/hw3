@@ -1,21 +1,15 @@
 class EntriesController < ApplicationController
 
-  # Optional: Display a list of all entries (across all places)
-  def index
-    @entries = Entry.all
-  end
 
   # Show detailed view for a single entry
   def show
-    @entry = Entry.find_by("id" => params["id"]) # Find the entry by its ID
+    @entry = Entry.find_by({"id" => params["id"]}) # Find the entry by its ID
   end
 
   def new
     # Find the place we're adding a new entry for using the ID from the URL.
-    @place = Place.find(params[:place_id])
+    @place = Place.find_by({ "id" => params["place_id"] })
     
-    # Create a new, unsaved entry. This is for the form on the 'new' page.
-    @entry = Entry.new
   end
   
 
@@ -29,7 +23,7 @@ class EntriesController < ApplicationController
     @entry.place_id = params["place_id"]
 
     if @entry.save
-      redirect_to place_path(@entry.place_id) # Redirect to the place's page showing its entries
+      redirect_to "/places/#{@entry["place_id"]}" # Redirect to the place's page showing its entries
     else
       @places = Place.all # In case saving fails, reload the form with existing place options
       render :new

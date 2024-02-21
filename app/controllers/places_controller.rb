@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
     @place = Place.new
     @place.name = params["name"] # Assign the name from the form to the new place
     @place.save # Save the new place
-    redirect_to places_path # Redirect to the list of all places
+    redirect_to "/places" # Redirect to the list of all places
   end
 
 end
