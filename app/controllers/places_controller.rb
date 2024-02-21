@@ -1,24 +1,27 @@
 class PlacesController < ApplicationController
+
+  # Display a list of all places
   def index
     @places = Place.all
   end
 
+  # Show detailed view for a single place, including its entries
+  def show
+    @place = Place.find_by("id" => params["id"]) # Find the place by its ID
+    @entries = Entry.where("place_id" => @place.id) # Get all entries for this place
+  end
+
+  # Display a form for creating a new place
   def new
-    @place = Place.new
   end
 
+  # Process the form submission for a new place
   def create
-    @place = Place.new(place_params)
-    if @place.save
-      redirect_to places_path
-    else
-      render :new
-    end
+    @place = Place.new
+    @place.name = params["name"] # Assign the name from the form to the new place
+    @place.save # Save the new place
+    redirect_to places_path # Redirect to the list of all places
   end
 
-  private  # The place_params method securely filters user input to allow only specified attributes (in this case, :name) for mass assignment to a model, protecting the application from potential security vulnerabilities.
-
-  def place_params
-    params.require(:place).permit(:name)
-  end
 end
+

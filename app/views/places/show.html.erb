@@ -1,0 +1,16 @@
+<h1><%= @place.name %></h1>
+
+<h2>Journal Entries</h2>
+
+<ul>
+  <% for entry in @entries %>
+    <li>
+      <%= link_to "#{entry.title} - #{entry.posted_on}", entry_path(entry) %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Log New Entry', new_place_entry_path(@place) %></p>
+<p><%= link_to 'Back to All Places', places_path %></p>
+
+

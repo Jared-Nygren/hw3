@@ -1,17 +1,12 @@
 <h1>Places I've Visited</h1>
 
-<%= link_to 'Add New Place', new_place_path %>
-
 <ul>
-  <% @places.each do |place| %>
+  <% for place in @places %>
     <li>
-      <%= link_to place.name, place_entries_path(place) %>
-      <!-- Add link to view entries for each place -->
-      <% if place.entries.any? %>
-        <%= link_to "View Entries", place_entries_path(place) %>
-      <% else %>
-        <span>No entries available</span>
-      <% end %>
+      <a href="/places/<%= place.id %>"><%= place.name %></a>
     </li>
   <% end %>
 </ul>
+
+<p><a href="/places/new">Add a New Place</a></p>
+

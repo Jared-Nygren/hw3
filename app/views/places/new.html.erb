@@ -1,19 +1,10 @@
-<h2>Add New Place</h2>
+<h1>Add a New Place</h1>
 
-<%= form_with(model: @place, local: true) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <br> <!-- Add some space here -->
-
-  <div>
-    <%= form.submit 'Create Place' %>
-  </div>
-<% end %>
-
-  <br> <!-- Add some space here -->
-
-<%= link_to 'Back to Places', places_path %>
+<form action="/places" method="post">
+  <p>
+    <label for="name">Name</label>
+    <input type="text" name="name">
+  </p>
+  <button>Submit</button>
+</form>
 
