@@ -25,6 +25,6 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.require(:entry).permit(:title, :description, :date)
+    params.require(:entry).permit(:title, :description, :posted_on)
   end
 end
