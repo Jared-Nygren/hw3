@@ -3,5 +3,5 @@ class Entry < ApplicationRecord
   belongs_to :place
 
   # Define date attribute
-  attribute :date, :date
+  attribute :posted_on, :date
 end
