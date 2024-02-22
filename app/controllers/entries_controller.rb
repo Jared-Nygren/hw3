@@ -30,6 +30,15 @@ class EntriesController < ApplicationController
     end
   end
 
+
+
+
+  
+
+# ******* Extra code to add functionality for editing and deleting -- assisted with GPT 
+
+
+
   # Display a form for editing an existing entry
   def edit
     @entry = Entry.find_by("id" => params["id"]) # Find the entry to edit
